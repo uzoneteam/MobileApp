@@ -1,0 +1,63 @@
+<div data-role="view" id="module" data-model="app.Module" data-init="app.Module.init" data-layout="default">
+    <div data-role="header">
+        <div data-role="navbar" style="background: #000000">
+            <img src="styles/images/UZONE_Logo_Transparent_Small.png" />
+            <span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
+            <div class="user-image">
+                <img src="styles/images/avatar.png">
+            </div>
+        </div>
+    </div>
+    <table class="moduleTable" cellpadding="4">
+        <tr>
+            <td>
+                <span id="profile" data-role="touch" data-bind="events: { tap: profile }">
+                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: profile }" data-icon="user"></a>
+                    </span>
+                <p class="moduleText">
+                    Profile
+                </p>
+            </td>
+            <td>
+                <span id="scheduler" data-role="touch" data-bind="events: { tap: scheduler }">
+                    <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: scheduler }" data-icon="calendar"></a>                        
+                    </span>
+                <p class="moduleText">
+                    Scheduler
+                </p>
+            </td>
+            <td>
+                <span id="chat" data-role="touch" data-bind="events: { tap: chat }">
+                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: chat }" data-icon="chat"></a>
+                </span>
+                <p class="moduleText">
+                    Chat
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="favorites" data-role="touch" data-bind="events: { tap: favorites }">
+                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: favorites }" data-icon="favorites"></a>
+                </span>
+                <p class="moduleText">
+                    Favorites
+                </p>
+            </td>
+            <td>
+                <span id="setting" data-role="touch" data-bind="events: { tap: settings }">
+                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: settings }" data-icon="settings"></a>
+                </span>
+                <p class="moduleText">
+                    Settings
+                </p>
+                
+            </td>
+        </tr>
+    </table>
+    <div data-role="footer">
+        <div data-role="navbar" style="background: #000000">
+            &nbsp;
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@
     <title></title>
     <meta charset="utf-8" />
     <script src="cordova.js"></script>
+    <script src="https://bs-static.cdn.telerik.com/1.4.1/everlive.all.min.js"></script>
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
@@ -20,9 +21,12 @@
     <script src="scripts/app/comments.js"></script>
     <script src="scripts/app/add-activity.js"></script>
     <script src="scripts/app/add-comment.js"></script>
-    <link href="//fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <script src="scripts/app/module.js"></script>
+    <link href="//fonts.googleapis.com/css?family=PT Sans Narrow:400,500,700" rel="stylesheet">
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/css/font-awesome.min.css">
     <link href="styles/main.css" rel="stylesheet">
+    
 </head>
 
 <body id="uzoneApp">
@@ -32,8 +36,9 @@
     <!--WELCOME VIEW -->
     <div data-role="view" id="welcome" data-layout="default" class="welcome-scrn form-view" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
         <div data-role="header"></div>
-        <h2 class="app-name"><small>UZone</small></h2>
         <form id="login-form">
+            <!--<h2 class="app-name"></h2>-->
+                <img class="app-name" src="styles/images/UZONE_Logo_Transparent.png" />
             <ul data-role="listview" data-style="inset">
                 <li class="username">
                     <input type="text" id="loginUsername" placeholder="username" required validationMessage="Username is required!">
@@ -54,7 +59,9 @@
                 <a data-role="button" href="views/signupView.html" class="btn">Sign up for free</a>
             </li>
         </ol>
+        
     </div>
+    
 </body>
 
 </html>

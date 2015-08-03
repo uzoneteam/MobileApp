@@ -1,0 +1,79 @@
+<div data-role="view" id="view-all-events" data-layout="default" class="activities-view event-background" data-model="app.Events">
+    <div data-role="header">
+        <div data-role="navbar" style="background: #000000">
+            <a href="#app-drawer" data-rel="drawer" data-role="button" data-align="left" data-icon="details"></a>
+            <img src="styles/images/UZONE_Logo_Transparent_Small.png" />
+            <span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
+            <div class="user-image">
+                <img src="styles/images/avatar.png">
+            </div>
+        </div>
+    </div>
+    <ul data-role="listview" data-source="events" data-template="eventsTemplate">
+    </ul>
+    </ul>
+    <div data-role="footer">
+        <div data-role="navbar" style="background: #000000">
+            <a class="nav-button nav-button-icon nav-button-back-d hide-text" data-align="left" data-role="backbutton" href="views/moduleView.html">Back</a>
+        </div>
+    </div>
+</div>
+<div data-role="drawer" id="app-drawer">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title">Select another Month</span>
+        </div>
+    </div>
+    <ul data-role="listview">
+        <li><a href="#view-all-events" data-icon="add">January</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">February</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">March</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">April</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">May</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">June</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">July</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">August</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">September</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">October</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">November</a>
+        </li>
+        <li><a href="#view-all-events" data-icon="add">December</a>
+        </li>
+    </ul>
+</div>
+<!-- Events ListView Template -->
+<script type="text/x-kendo-template" id="eventsTemplate">
+    <div data-role="touch" class="event-background">
+        <div class="activity-content">
+            <a class="event-subj-txt">#: EventSubject #</a>
+            <span class="event-loc-txt">#: EventLocationID #</span>
+            <a class="event-desc-txt">#: EventDescription #</a>
+            <span class="time-span">#: EventStart #&nbsp; #: EventEnd#</span>
+            <input type="checkbox" id="switch" data-role="switch" />
+        </div>
+    </div>
+</script>
+<script>
+   
+    var events = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "http://localhost:52534/api/1/events/7?callback=?",
+                dataType: "jsonp"
+            }
+        }
+    });
+    
+   
+    var switchInstance = $("#switch").kendoMobileSwitch({ onLabel: "Y", offLabel: "N" });
+</script>

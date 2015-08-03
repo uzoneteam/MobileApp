@@ -1,5 +1,9 @@
 {
   "CorePlugins": [
+    "com.phonegap.plugins.PushPlugin@2.5.8",
+    "com.telerik.feedback",
+    "com.telerik.mobiletesting",
+    "com.telerik.plugin.eqatecanalytics",
     "org.apache.cordova.battery-status",
     "org.apache.cordova.camera",
     "org.apache.cordova.console",
@@ -17,10 +21,7 @@
     "org.apache.cordova.media-capture",
     "org.apache.cordova.network-information",
     "org.apache.cordova.splashscreen",
-    "org.apache.cordova.vibration",
-    "com.telerik.feedback",
-    "com.telerik.plugin.eqatecanalytics",
-    "com.telerik.mobiletesting"
+    "org.apache.cordova.vibration"
   ],
   "CordovaPluginVariables": {
     "com.telerik.mobiletesting": {

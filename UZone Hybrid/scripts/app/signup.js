@@ -11,21 +11,21 @@ app.Signup = (function () {
         var dataSource;
         var $signUpForm;
         var $formFields;
-        var $signupInfo;
+        //var $signupInfo;
         var $signupBtnWrp;
         var validator;
 
         // Register user after required fields (username and password) are validated in Backend Services
         var signup = function () {
 
-            dataSource.Gender = parseInt(dataSource.Gender);
-            var birthDate = new Date(dataSource.BirthDate);
+            //dataSource.Gender = parseInt(dataSource.Gender);
+            //var birthDate = new Date(dataSource.BirthDate);
 
-            if (birthDate.toJSON() === null) {
-                birthDate = new Date();
-            }
+            //if (birthDate.toJSON() === null) {
+            //    birthDate = new Date();
+            //}
 
-            dataSource.BirthDate = birthDate;
+           //dataSource.BirthDate = birthDate;
 
             Everlive.$.Users.register(
                 dataSource.Username,
@@ -46,7 +46,7 @@ app.Signup = (function () {
 
             $signUpForm = $('#signUp');
             $formFields = $signUpForm.find('input, textarea, select');
-            $signupInfo = $('#signupInfo');
+            //$signupInfo = $('#signupInfo');
             $signupBtnWrp = $('#signupBtnWrp');
             validator = $signUpForm.kendoValidator({ validateOnBlur: false }).data('kendoValidator');
 
@@ -58,22 +58,22 @@ app.Signup = (function () {
                 }
             });
 
-            $signupInfo.on('keydown', app.helper.autoSizeTextarea);
+            //$signupInfo.on('keydown', app.helper.autoSizeTextarea);
         }
 
         // Executed after show of the Signup view
         var show = function () {
-            $signupInfo.prop('rows', 1);
+            //$signupInfo.prop('rows', 1);
 
             dataSource = kendo.observable({
                 Username: '',
                 Password: '',
                 DisplayName: '',
                 Email: '',
-                Gender: '0',
-                About: '',
-                Friends: [],
-                BirthDate: new Date()
+                School: '0'
+                //About: '',
+                //Friends: [],
+               // BirthDate: new Date()
             });
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };

@@ -2,12 +2,11 @@ var app = (function (win) {
     'use strict';
 
     // Global error handling
-    var showAlert = function(message, title, callback) {
-        navigator.notification.alert(message, callback || function () {
-        }, title, 'OK');
+    var showAlert = function (message, title, callback) {
+        navigator.notification.alert(message, callback || function () {}, title, 'OK');
     };
 
-    var showError = function(message) {
+    var showError = function (message) {
         showAlert(message, 'Error occured');
     };
 
@@ -22,9 +21,8 @@ var app = (function (win) {
     });
 
     // Global confirm dialog
-    var showConfirm = function(message, title, callback) {
-        navigator.notification.confirm(message, callback || function () {
-        }, title, ['OK', 'Cancel']);
+    var showConfirm = function (message, title, callback) {
+        navigator.notification.confirm(message, callback || function () {}, title, ['OK', 'Cancel']);
     };
 
     var isNullOrEmpty = function (value) {
@@ -37,7 +35,7 @@ var app = (function (win) {
     };
 
     // Handle device back button tap
-    var onBackKeyDown = function(e) {
+    var onBackKeyDown = function (e) {
         e.preventDefault();
 
         navigator.notification.confirm('Do you really want to exit?', function (confirmed) {
@@ -55,7 +53,19 @@ var app = (function (win) {
         }, 'Exit', ['OK', 'Cancel']);
     };
 
-    var onDeviceReady = function() {
+    var everliveOptions = {
+        apiKey: appSettings.everlive.apiKey,
+        scheme: appSettings.everlive.scheme
+    };
+
+    if (appSettings.everlive.url) {
+        everliveOptions.url = appSettings.everlive.url;
+    }
+
+    // Initialize Everlive SDK
+    var el = new Everlive(everliveOptions);
+
+    var onDeviceReady = function () {
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
 
@@ -64,7 +74,7 @@ var app = (function (win) {
         if (analytics.isAnalytics()) {
             analytics.Start();
         }
-        
+
         // Initialize AppFeedback
         if (app.isKeySet(appSettings.feedback.apiKey)) {
             try {
@@ -76,22 +86,37 @@ var app = (function (win) {
         } else {
             console.log('Telerik AppFeedback API key is not set. You cannot use feedback service.');
         }
+
+        // Initialize push notifications
+        /*var devicePushSettings = {
+            iOS: {
+                badge: 'true',
+                sound: 'true',
+                alert: 'true'
+            },
+            android: {
+                projectNumber: '926465504751'
+            },
+            wp8: {
+                channelName: 'EverlivePushChannel'
+            },
+            notificationCallbackIOS: onPushNotificationReceived,
+            notificationCallbackAndroid: onPushNotificationReceived,
+            notificationCallbackWP8: onPushNotificationReceived
+        };
+
+        el.push.register(devicePushSettings, function () {
+            alert("Successful registration in Backend Services. You are ready to receive push notifications.");
+        }, function (err) {
+            alert("Error: " + err.message);
+        });*/
+
     };
 
     // Handle "deviceready" event
     document.addEventListener('deviceready', onDeviceReady, false);
 
-    var everliveOptions = {
-                              apiKey: appSettings.everlive.apiKey,
-                              scheme: appSettings.everlive.scheme
-                          };
 
-    if(appSettings.everlive.url){
-        everliveOptions.url = appSettings.everlive.url;
-    }
-
-    // Initialize Everlive SDK
-    var el = new Everlive(everliveOptions);
 
     var emptyGuid = '00000000-0000-0000-0000-000000000000';
 
@@ -136,10 +161,11 @@ var app = (function (win) {
 
     // Initialize KendoUI mobile application
     var mobileApp = new kendo.mobile.Application(document.body, {
-                                                     transition: 'slide',
-                                                     statusBarStyle: statusBarStyle,
-                                                     skin: 'flat'
-                                                 });
+        transition: 'zoom',
+        statusBarStyle: statusBarStyle,
+        skin: 'flat'
+    });
+
 
     return {
         showAlert: showAlert,
