@@ -28,8 +28,7 @@ app.Module = (function () {
                 analytics.TrackFeature('Module.Scheduler');
             }
             app.mobileApp.hideLoading();
-            app.mobileApp.navigate('views/moduleScheduler.html');
-            //app.mobileApp.navigate('views/activitiesView.html');
+            app.mobileApp.navigate('views/activityView.html');            
         };
 
         var profile = function () {

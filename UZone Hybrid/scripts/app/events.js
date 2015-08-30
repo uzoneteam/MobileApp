@@ -4,11 +4,12 @@
 
 var app = app || {};
 
-app.Event = (function () {
+app.Events = (function () {
     'use strict';
 
     var eventViewModel = (function () {
-
+		
+       
         var isInMistSimulator = (location.host.indexOf('icenium.com') > -1);
 
         var isAnalytics = analytics.isAnalytics();
@@ -20,35 +21,31 @@ app.Event = (function () {
             } else if (isAnalytics) {
                 analytics.TrackFeature('Events');
             }
-
-            var foo = new kendo.data.DataSource({
-                data: [{
-                    name: "foo"
-                }]
-            });
-            var bar = new kendo.data.DataSource({
-                data: [{
-                    name: "bar"
-                }]
-            });
-
-            function rebindListView() {
-                $("#listView").data("kendoMobileListView").setDataSource(bar);
-            }
-
-            //$("#activities-listview").kendoListView({
-            //    dataSource: dataSource,
-            //    template: kendo.template($("#eventsTemplate").html())
-            //});
+            
+            console.log(e.view.params);
         };
 
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
         }
+        
+        
+        
+       /* var testing = function () {
+            console.log('here');
+            return month;
+        }
+
+        var monthSelection = function () {
+            month = $newMonth.val();
+            console.log('here');
+        };*/
 
         return {
             init: init,
             displayName: displayName
+            //testing: testing,
+            //monthSelection: monthSelection
         };
     }());
 
