@@ -20,14 +20,28 @@ app.Events = (function () {
                 console.log('EQATEC product key is not set. You cannot use EQATEC Analytics service.');
             } else if (isAnalytics) {
                 analytics.TrackFeature('Events');
-            }
-            
-            console.log(e.view.params);
+            }                       
         };
 
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
         }
+        
+        var show = function (e) {
+            
+            
+            console.log(e.view.params.month);
+            
+            var events = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "http://localhost:52534/api/1/events/7?callback=?",
+                dataType: "jsonp"
+            }
+        }
+    });
+            
+        };
         
         
         
@@ -43,7 +57,8 @@ app.Events = (function () {
 
         return {
             init: init,
-            displayName: displayName
+            displayName: displayName,
+            show: show
             //testing: testing,
             //monthSelection: monthSelection
         };

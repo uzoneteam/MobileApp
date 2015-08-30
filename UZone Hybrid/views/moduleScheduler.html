@@ -1,10 +1,9 @@
-<div data-role="view" id="view-all-events" data-layout="default" data-init="app.Events.init" class="activities-view" data-model="app.Events">
+<div data-role="view" id="view-all-events" data-layout="default" data-init="app.Events.init" class="activities-view" data-show="app.Events.show" data-model="app.Events">
     <div data-role="header">
         <div data-role="navbar" style="background: #000000">
             <a href="#app-drawer" data-rel="drawer" data-role="button" data-align="left" data-icon="details"></a>
             <img src="styles/images/UZONE_Logo_Transparent_Small.png" />
-            <span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
-            <span data-align="right">HI&nbsp;</span><span id="test" data-align="right" data-bind="text: testing"></span>
+            <span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>            
             <div class="user-image">
                 <img src="styles/images/avatar.png">
             </div>
@@ -28,29 +27,29 @@
         </div>
     </div>
     <ul data-role="listview">
-        <li><a href="#view-all-events?month=January" data-icon="add">January</a>
+        <li><a href="#view-all-events?month=1" data-icon="add">January</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">February</a>
+        <li><a href="#view-all-events?month=2" data-icon="add">February</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">March</a>
+        <li><a href="#view-all-events?month=3" data-icon="add">March</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">April</a>
+        <li><a href="#view-all-events?month=4" data-icon="add">April</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">May</a>
+        <li><a href="#view-all-events?month=5" data-icon="add">May</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">June</a>
+        <li><a href="#view-all-events?month=6" data-icon="add">June</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">July</a>
+        <li><a href="#view-all-events?month=7" data-icon="add">July</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">August</a>
+        <li><a href="#view-all-events?month=8" data-icon="add">August</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">September</a>
+        <li><a href="#view-all-events?month=9" data-icon="add">September</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">October</a>
+        <li><a href="#view-all-events?month=10" data-icon="add">October</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">November</a>
+        <li><a href="#view-all-events?month=11" data-icon="add">November</a>
         </li>
-        <li><a href="#view-all-events" data-icon="add">December</a>
+        <li><a href="#view-all-events?month=12" data-icon="add">December</a>
         </li>
     </ul>
 </div>
