@@ -10,7 +10,7 @@
         </div>
     </div>
     <div>
-        <ul data-role="listview" data-source="events" data-template="eventsTemplate">
+        <ul data-role="listview" data-source="events" data-template="eventsTemplate" id="scheduleList">
         </ul>
         </ul> 
     </div>
@@ -66,15 +66,6 @@
     </div>
 </script>
 <script>
-    var events = new kendo.data.DataSource({
-        transport: {
-            read: {
-                url: "http://localhost:52534/api/1/events/7?callback=?",
-                dataType: "jsonp"
-            }
-        }
-    });
-        
     var switchInstance = $("#switch").kendoMobileSwitch({
         onLabel: "Y",
         offLabel: "N"
