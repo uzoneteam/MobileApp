@@ -8,8 +8,8 @@ app.Events = (function () {
     'use strict';
 
     var eventViewModel = (function () {
-		
-       
+
+
         var isInMistSimulator = (location.host.indexOf('icenium.com') > -1);
 
         var isAnalytics = analytics.isAnalytics();
@@ -20,47 +20,53 @@ app.Events = (function () {
                 console.log('EQATEC product key is not set. You cannot use EQATEC Analytics service.');
             } else if (isAnalytics) {
                 analytics.TrackFeature('Events');
-            }                       
+            }
+
+            $("#scheduleList").kendoMobileListView({
+                pullToRefresh: true,
+                dataSource: new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            // change to be the inital endpoint by school
+                            url: "http://localhost:52534/api/events/1?callback=?",
+                            dataType: "jsonp"
+                        }
+                    }
+                }),
+                template: $("#eventsTemplate").html()
+            });
         };
 
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
         }
-        
-        var show = function (e) {
-            
-            
-            console.log(e.view.params.month);
-            
-            var events = new kendo.data.DataSource({
-        transport: {
-            read: {
-                url: "http://localhost:52534/api/1/events/7?callback=?",
-                dataType: "jsonp"
-            }
-        }
-    });
-            
-        };
-        
-        
-        
-       /* var testing = function () {
-            console.log('here');
-            return month;
-        }
 
-        var monthSelection = function () {
-            month = $newMonth.val();
-            console.log('here');
-        };*/
+        var show = function (e) {
+
+            if (e.view.params.month != undefined) {
+                console.log('got params');
+
+                $("#scheduleList").kendoMobileListView({
+                    pullToRefresh: true,
+                    dataSource: new kendo.data.DataSource({
+                        transport: {
+                            read: {
+                                // change to get school id
+                                url: "http://localhost:52534/api/1/events/" + e.view.params.month + "?callback=?",
+                                dataType: "jsonp"
+                            }
+                        }
+                    }),
+                    template: $("#eventsTemplate").html()
+                });
+
+            }
+        };
 
         return {
             init: init,
             displayName: displayName,
-            show: show
-            //testing: testing,
-            //monthSelection: monthSelection
+            show: show               
         };
     }());
 
