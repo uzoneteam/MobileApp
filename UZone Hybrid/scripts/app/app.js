@@ -161,7 +161,7 @@ var app = (function (win) {
 
     // Initialize KendoUI mobile application
     var mobileApp = new kendo.mobile.Application(document.body, {
-        transition: 'zoom',
+        transition: 'slide',
         statusBarStyle: statusBarStyle,
         skin: 'flat'
     });

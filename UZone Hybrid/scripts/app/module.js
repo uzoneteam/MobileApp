@@ -37,7 +37,7 @@ app.Module = (function () {
                 analytics.TrackFeature('Profile');
             }
             app.mobileApp.hideLoading();
-            app.mobileApp.navigate('views/moduleView.html');
+            app.mobileApp.navigate('views/signupView.html');
         };
         
         var chat = function () {

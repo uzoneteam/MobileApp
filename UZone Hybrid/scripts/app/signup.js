@@ -9,6 +9,7 @@ app.Signup = (function () {
     var singupViewModel = (function () {
 
         var dataSource;
+        var schoolDataSource;
         var $signUpForm;
         var $formFields;
         //var $signupInfo;
@@ -25,19 +26,19 @@ app.Signup = (function () {
             //    birthDate = new Date();
             //}
 
-           //dataSource.BirthDate = birthDate;
+            //dataSource.BirthDate = birthDate;
 
             Everlive.$.Users.register(
-                dataSource.Username,
-                dataSource.Password,
-                dataSource)
-            .then(function () {
-                app.showAlert("Registration successful");
-                app.mobileApp.navigate('#welcome');
-            },
-            function (err) {
-                app.showError(err.message);
-            });
+                    dataSource.Username,
+                    dataSource.Password,
+                    dataSource)
+                .then(function () {
+                        app.showAlert("Registration successful");
+                        app.mobileApp.navigate('#welcome');
+                    },
+                    function (err) {
+                        app.showError(err.message);
+                    });
         };
 
         // Executed after Signup view initialization
@@ -48,7 +49,9 @@ app.Signup = (function () {
             $formFields = $signUpForm.find('input, textarea, select');
             //$signupInfo = $('#signupInfo');
             $signupBtnWrp = $('#signupBtnWrp');
-            validator = $signUpForm.kendoValidator({ validateOnBlur: false }).data('kendoValidator');
+            validator = $signUpForm.kendoValidator({
+                validateOnBlur: false
+            }).data('kendoValidator');
 
             $formFields.on('keyup keypress blur change input', function () {
                 if (validator.validate()) {
@@ -58,8 +61,8 @@ app.Signup = (function () {
                 }
             });
 
-            //$signupInfo.on('keydown', app.helper.autoSizeTextarea);
-        }
+
+        };
 
         // Executed after show of the Signup view
         var show = function () {
@@ -70,10 +73,12 @@ app.Signup = (function () {
                 Password: '',
                 DisplayName: '',
                 Email: '',
-                School: '0'
-                //About: '',
-                //Friends: [],
-               // BirthDate: new Date()
+                School: '0',
+                Major: '',
+                BirthDate: ''               
+                    //About: '',
+                    //Friends: [],
+                    // BirthDate: new Date()
             });
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };
@@ -88,7 +93,7 @@ app.Signup = (function () {
             var selected = sel.options[sel.selectedIndex].value;
             sel.style.color = (selected === 0) ? '#b6c5c6' : '#34495e';
         }
-
+        
         return {
             init: init,
             show: show,
