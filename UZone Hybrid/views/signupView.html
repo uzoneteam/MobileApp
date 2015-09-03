@@ -11,8 +11,7 @@
                 <input type="text" id="signupName" data-bind="value: DisplayName" placeholder="name" required>
             </li>
             <li>
-                <input type="text" id="signupEmail" data-bind="value: Email" placeholder="email" pattern="^\w+@[a-zA-Z_]+?\.edu$"
-                    data-message="My custom email message" required>
+                <input type="text" id="signupEmail" data-bind="value: Email" placeholder="email" pattern="^\w+@[a-zA-Z_]+?\.edu$" data-message="My custom email message" required>
             </li>
             <li>
                 <input type="text" id="signupUsername" data-bind="value: Username" placeholder="username" required>
@@ -26,25 +25,18 @@
             <li>
                 <input type="text" id="signupMajor" data-bind="value: Major" placeholder="major">
             </li>
-            <!--<li class="select-wrp">-->
-            <!--<select id="signupSchoolPicker" data-bind="value: School" onchange="app.Signup.onSelectChange(this)">
-                <option value="None" selected="true">school</option>
-                <option value="Winston Salem State University" selected>Winston Salem State University</option>
-            </select>-->
             <select id="signupSchoolPicker" data-role="dropdownlist" data-bind="value: School">
                 <option value="0" selected>select a school</option>
                 <option value="Winston Salem State University">Winston Salem State University</option>
             </select>
-            <!--</li-->
-            <!--<li class="txtarea-wrp">
-                <textarea id="signupInfo" data-bind="value: About" placeholder="about">User account created from the hybrid app.</textarea>
-            </li>-->
-        </ul>        
+            <hr/>
+        </ul>
     </form>
+    <button data-role="button" data-bind="click: addAvatar" data-align="right">Add Avatar Image</button>
+    <ul id="avatarImage"></ul>
     <div id="signupBtnWrp" class="signup-btn-wrp disabled">
         <a class="btn btn-signup" data-role="button" data-bind="click: signup">Register</a>
     </div>
 </div>
 <script>
-   
 </script>
