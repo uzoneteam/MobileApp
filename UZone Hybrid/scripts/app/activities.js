@@ -50,10 +50,12 @@ app.Activities = (function () {
                 var user = $.grep(app.Users.users(), function (e) {
                     return e.Id === userId;
                 })[0];
+                
+                console.log(user);
 
                 return user ? {
                     DisplayName: user.DisplayName,
-                    PictureUrl: app.helper.resolveProfilePictureUrl(user.Picture)
+                    PictureUrl: user.AvatarUri
                 } : {
                     DisplayName: 'Anonymous',
                     PictureUrl: app.helper.resolveProfilePictureUrl()
@@ -111,19 +113,18 @@ app.Activities = (function () {
         };
 
         // Logout user
-        var logout = function () {
+        /*var logout = function () {
 
             app.helper.logout()
             .then(navigateHome, function (err) {
                 app.showError(err.message);
                 navigateHome();
             });
-        };
+        };*/
 
         return {
             activities: activitiesModel.activities,
-            activitySelected: activitySelected,
-            logout: logout
+            activitySelected: activitySelected
         };
 
     }());

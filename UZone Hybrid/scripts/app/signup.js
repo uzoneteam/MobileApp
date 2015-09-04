@@ -96,6 +96,8 @@ app.Signup = (function () {
                 School: '0',
                 Major: '',
                 BirthDate: '',
+                Frat_Soro: '',
+                Graduation_Year: '',
                 AvatarUri: userAvatarUri
                     //About: '',
                     //Friends: [],

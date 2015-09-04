@@ -42,7 +42,7 @@ app.AddComment = (function () {
                 comment.ActivityId = app.Activity.activity().Id;
                 
                 comments.one('sync', function () {
-                    app.mobileApp.navigate('#:back');
+                    app.mobileApp.navigate('views/activitiesView.html');
                 });
                 
                 comments.sync();

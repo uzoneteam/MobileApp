@@ -1,8 +1,19 @@
 <div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-comment-view"
     data-init="app.AddComment.init" data-show="app.AddComment.show" data-model="app.AddComment">
-    <div data-role="header">
+    <!--<div data-role="header">
         <div data-role="navbar">
             Friends
+            <a class="nav-button" data-align="left" data-role="backbutton">Cancel</a>
+            <a class="nav-button" data-align="right" data-role="button" data-bind="click: saveComment">Done</a>
+        </div>
+    </div>-->
+    <div data-role="header">
+        <div data-role="navbar" style="background: #000000">
+            <img src="styles/images/UZONE_Logo_Transparent_Small.png" />
+            <!--<span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
+            <div class="user-image">
+                <img src="styles/images/avatar.png">
+            </div>-->
             <a class="nav-button" data-align="left" data-role="backbutton">Cancel</a>
             <a class="nav-button" data-align="right" data-role="button" data-bind="click: saveComment">Done</a>
         </div>

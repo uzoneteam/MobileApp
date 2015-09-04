@@ -55,7 +55,7 @@ app.Activity = (function () {
                         
                         activities.remove(activity);
                         activities.one('sync', function () {
-                            app.mobileApp.navigate('#:back');
+                            app.mobileApp.navigate('views/activitiesView.html');
                         });
                         activities.sync();
                     }

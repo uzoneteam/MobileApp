@@ -62,11 +62,33 @@ app.Events = (function () {
 
             }
         };
+        
+        var saveActivity = function () {
+            console.log('here');
+            app.mobileApp.navigate('views/activitiesView.html');
+            // Validating of the required fields
+            //if (validator.validate()) {
+                
+                // Adding new activity to Activities model
+               /* var activities = app.Activities.activities;
+                var activity = activities.add();
+                
+                activity.Text = 'test';
+                activity.UserId = app.Users.currentUser.get('data').Id;
+                
+                activities.one('sync', function () {
+                    app.mobileApp.navigate('views/activitiesView.html');
+                });
+                
+                activities.sync();*/
+            //}
+        };
 
         return {
             init: init,
             displayName: displayName,
-            show: show               
+            show: show ,
+            saveActivity: saveActivity
         };
     }());
 

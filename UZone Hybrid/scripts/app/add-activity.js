@@ -41,7 +41,7 @@ app.AddActivity = (function () {
                 activity.UserId = app.Users.currentUser.get('data').Id;
                 
                 activities.one('sync', function () {
-                    app.mobileApp.navigate('#:back');
+                    app.mobileApp.navigate('views/activitiesView.html');
                 });
                 
                 activities.sync();

@@ -46,7 +46,7 @@ app.Module = (function () {
                 analytics.TrackFeature('Chat');
             }
             app.mobileApp.hideLoading();
-            app.mobileApp.navigate('views/moduleView.html');
+            app.mobileApp.navigate('views/activitiesView.html');
         };
         
         var favorites = function () {

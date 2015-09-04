@@ -62,12 +62,31 @@
             <a class="event-desc-txt">#: EventDescription #</a>
             <span class="time-span">#: EventStart #&nbsp; #: EventEnd#</span>
             <input type="checkbox" id="switch" data-role="switch" />
+             <a data-align="right" data-role="button" onclick="test()" >Chat Now</a>
         </div>
     </div>
+</script>
+<script>
+function test() {
+var activities = app.Activities.activities;
+                var activity = activities.add();
+                
+                activity.Text = 'test';
+                activity.UserId = app.Users.currentUser.get('data').Id;
+                
+                activities.one('sync', function () {
+                    app.mobileApp.navigate('views/activitiesView.html');
+                });
+                
+                activities.sync();
+    }
 </script>
 <script>
     var switchInstance = $("#switch").kendoMobileSwitch({
         onLabel: "Y",
         offLabel: "N"
     });
+    
+        
+
 </script>
