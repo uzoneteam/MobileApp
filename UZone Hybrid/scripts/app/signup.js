@@ -12,36 +12,40 @@ app.Signup = (function () {
         var schoolDataSource;
         var $signUpForm;
         var $formFields;
-        //var $signupInfo;
         var $signupBtnWrp;
         var validator;
         var userAvatarUri;
 
-        // Register user after required fields (username and password) are validated in Backend Services
         var signup = function () {
+            var errorCount = 0;
 
-            //dataSource.Gender = parseInt(dataSource.Gender);
-            //var birthDate = new Date(dataSource.BirthDate);
+            validator = $('#signupFields').kendoValidator({
+                validateOnBlur: false
+            }).data('kendoValidator');
 
-            //if (birthDate.toJSON() === null) {
-            //    birthDate = new Date();
-            //}
+            $('#signupFields input,select').each(function () {
+                console.log(validator.validateInput($(this)));
+                if (validator.validateInput($(this)) === false) {
+                    errorCount = errorCount + 1;
+                    $(this).siblings('.km-icon').addClass('invalid');
+                    return false;
+                }
+            })
 
-            //dataSource.BirthDate = birthDate;
-            console.log(dataSource);
-            dataSource.AvatarUri = userAvatarUri;
-            console.log(dataSource);
-            Everlive.$.Users.register(
-                    dataSource.Username,
-                    dataSource.Password,
-                    dataSource)
-                .then(function () {
-                        app.showAlert("Registration successful");
-                        app.mobileApp.navigate('#welcome');
-                    },
-                    function (err) {
-                        app.showError(err.message);
-                    });
+            if (errorCount === 0) {
+                dataSource.AvatarUri = userAvatarUri;
+                Everlive.$.Users.register(
+                        dataSource.Username,
+                        dataSource.Password,
+                        dataSource)
+                    .then(function () {
+                            app.showAlert("Registration successful");
+                            app.mobileApp.navigate('views/moduleView.html');
+                        },
+                        function (err) {
+                            app.showError(err.message);
+                        });
+            }
         };
 
         var addAvatar = function () {
@@ -62,31 +66,12 @@ app.Signup = (function () {
             };
             navigator.camera.getPicture(success, error, config);
         }
-
-        // Executed after Signup view initialization
-        // init form validator
+        
         var init = function () {
 
-            $signUpForm = $('#signUp');
-            $formFields = $signUpForm.find('input, textarea, select');
-            //$signupInfo = $('#signupInfo');
-            $signupBtnWrp = $('#signupBtnWrp');
-            validator = $signUpForm.kendoValidator({
-                validateOnBlur: false
-            }).data('kendoValidator');
-
-            $formFields.on('keyup keypress blur change input', function () {
-                if (validator.validate()) {
-                    $signupBtnWrp.removeClass('disabled');
-                } else {
-                    $signupBtnWrp.addClass('disabled');
-                }
-            });
         };
 
-        // Executed after show of the Signup view
         var show = function () {
-            //$signupInfo.prop('rows', 1);
 
             dataSource = kendo.observable({
                 Username: '',
@@ -99,23 +84,9 @@ app.Signup = (function () {
                 Frat_Soro: '',
                 Graduation_Year: '',
                 AvatarUri: userAvatarUri
-                    //About: '',
-                    //Friends: [],
-                    // BirthDate: new Date()
             });
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };
-
-        // Executed after hide of the Signup view
-        // disable signup button
-        var hide = function () {
-            $signupBtnWrp.addClass('disabled');
-        };
-
-        var onSelectChange = function (sel) {
-            var selected = sel.options[sel.selectedIndex].value;
-            sel.style.color = (selected === 0) ? '#b6c5c6' : '#34495e';
-        }
 
         function loadPhotos() {
             Everlive.$.Files.get().then(function (data) {
@@ -133,8 +104,6 @@ app.Signup = (function () {
         return {
             init: init,
             show: show,
-            hide: hide,
-            onSelectChange: onSelectChange,
             signup: signup,
             addAvatar: addAvatar
         };

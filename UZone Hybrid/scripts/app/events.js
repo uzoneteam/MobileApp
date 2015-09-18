@@ -28,7 +28,7 @@ app.Events = (function () {
                     transport: {
                         read: {
                             // change to be the inital endpoint by school
-                            url: "http://localhost:52534/api/events/1?callback=?",
+                            url: "http://uzonewebapi.azurewebsites.net/api/events/1?callback=?",
                             dataType: "jsonp"
                         }
                     }
@@ -52,7 +52,7 @@ app.Events = (function () {
                         transport: {
                             read: {
                                 // change to get school id
-                                url: "http://localhost:52534/api/1/events/" + e.view.params.month + "?callback=?",
+                                url: "http://uzonewebapi.azurewebsites.net/api/1/events/" + e.view.params.month + "?callback=?",
                                 dataType: "jsonp"
                             }
                         }

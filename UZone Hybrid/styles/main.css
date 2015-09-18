@@ -39,8 +39,8 @@
 .km-flat .km-listview-label input[type=checkbox]:checked {
     background: #4d4d4d;
 }
-.km-flat .km-loader {f
-    background-color: rgba(0, 0, 0, .75);
+.km-flat .km-loader {
+    f background-color: rgba(0, 0, 0, .75);
 }
 .km-flat .km-loader::before {
     background: none;
@@ -61,7 +61,7 @@ input[type='week'] {
     border: 0 none;
     color: #4d4d4d;
     background-color: #fff;
-   /* background-image: url(images/black_background.jpg) !important;*/
+    /* background-image: url(images/black_background.jpg) !important;*/
 }
 #uzoneApp.km-flat .km-navbar {
     background-color: #fff;
@@ -349,6 +349,7 @@ input[type='week'] {
     border-width: 0;
     color: #4d4d4d;
     /*background-color: #fff;*/
+    
     box-shadow: none;
     overflow: visible;
 }
@@ -402,6 +403,7 @@ input[type='week'] {
 #uzoneApp .comment-content {
     position: relative;
     /*padding-left: 5em;*/
+    
     font-size: .85rem;
 }
 #uzoneApp .activity-content .picture {
@@ -629,7 +631,48 @@ input[type='week'] {
     text-transform: uppercase;
     word-wrap: break-word;
 }
-
 .event-items {
-   background-image: url(images/black_background.jpg) !important;
+    background-image: url(images/black_background.jpg) !important;
+}
+.messages > .k-widget.k-tooltip-validation {
+    width: 100%;
+    text-align: left;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+}
+.km-user:after,
+.km-user:before {
+    content: "\e0e4";
+}
+.km-message:after,
+.km-message:before {
+    content: "\e099";
+}
+.km-school:after,
+.km-school:before {
+    content: "\e0dd";
+}
+.km-major:after,
+.km-major:before {
+    content: "\e088";
+}
+.km-frat:after,
+.km-frat:before {
+    content: "\e0d6";
+}
+.km-gradYear:after,
+.km-gradYear:before {
+    content: "\e0d7";
+}
+.km-password:after,
+.km-password:before {
+    content: "\e07b";
+}
+.km-birth:after,
+.km-birth:before {
+    content: "\e089";
+}
+.invalid {
+    color: red;
 }

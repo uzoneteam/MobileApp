@@ -24,6 +24,8 @@ app.Login = (function () {
 
             $loginUsername = $('#loginUsername');
             $loginPassword = $('#loginPassword');
+            
+			$loginUsername.focus();
 
            
             if (!isAnalytics) {
