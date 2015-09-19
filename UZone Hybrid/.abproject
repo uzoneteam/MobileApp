@@ -3,9 +3,9 @@
   "ProjectGuid": "63aaffe1-fb3a-4f7d-8a4e-fac7c989260f",
   "projectVersion": 1,
   "AppIdentifier": "com.telerik.UZoneHybrid",
-  "DisplayName": "UZone Hybrid",
-  "Author": "",
-  "Description": "UZone Hybrid",
+  "DisplayName": "UZone",
+  "Author": "ForrTech, LLC",
+  "Description": "UZone",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [

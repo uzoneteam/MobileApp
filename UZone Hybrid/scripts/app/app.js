@@ -69,23 +69,24 @@ var app = (function (win) {
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
 
-        navigator.splashscreen.hide();
+        //navigator.splashscreen.hide();
+        navigator.splashscreen.show();
 
         if (analytics.isAnalytics()) {
             analytics.Start();
         }
 
         // Initialize AppFeedback
-        if (app.isKeySet(appSettings.feedback.apiKey)) {
-            try {
-                feedback.initialize(appSettings.feedback.apiKey, appSettings.feedback.options);
-            } catch (err) {
-                console.log('Something went wrong:');
-                console.log(err);
-            }
-        } else {
-            console.log('Telerik AppFeedback API key is not set. You cannot use feedback service.');
-        }
+        // if (app.isKeySet(appSettings.feedback.apiKey)) {
+        //     try {
+        //         feedback.initialize(appSettings.feedback.apiKey, appSettings.feedback.options);
+        //     } catch (err) {
+        //         console.log('Something went wrong:');
+        //         console.log(err);
+        //     }
+        // } else {
+        //     console.log('Telerik AppFeedback API key is not set. You cannot use feedback service.');
+        // }
 
         // Initialize push notifications
         /*var devicePushSettings = {
