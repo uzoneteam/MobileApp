@@ -68,9 +68,12 @@ var app = (function (win) {
     var onDeviceReady = function () {
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
-
-        //navigator.splashscreen.hide();
+        
         navigator.splashscreen.show();
+        setTimeout(function() {
+             navigator.splashscreen.hide();
+        },5000);
+       
 
         if (analytics.isAnalytics()) {
             analytics.Start();
