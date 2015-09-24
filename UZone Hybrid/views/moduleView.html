@@ -1,58 +1,43 @@
 <div data-role="view" id="module" data-model="app.Module" data-init="app.Module.init" data-layout="default">
     <div data-role="header">
         <div data-role="navbar" style="background: #000000">
-            <img src="styles/images/UZONE_Logo_Transparent_Small.png" />
+            <img style="float:left" src="styles/images/UZONE_Logo_Transparent_Small.png" />
             <span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
             <div class="user-image">
                 <img src="styles/images/avatar.png">
             </div>
         </div>
     </div>
-    <table class="moduleTable" cellpadding="4">
+    <table class="moduleTable">
         <tr>
             <td>
-                <span id="profile" data-role="touch" data-bind="events: { tap: profile }">
-                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: profile }" data-icon="user"></a>
-                    </span>
-                <p class="moduleText">
-                    Profile
-                </p>
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: profile }" data-icon="profile"></a>
             </td>
             <td>
-                <span id="scheduler" data-role="touch" data-bind="events: { tap: scheduler }">
-                    <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: scheduler }" data-icon="calendar"></a>                        
-                    </span>
-                <p class="moduleText">
-                    Scheduler
-                </p>
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: chat }" data-icon="chat"></a>
             </td>
             <td>
-                <span id="chat" data-role="touch" data-bind="events: { tap: chat }">
-                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: chat }" data-icon="chat"></a>
-                </span>
-                <p class="moduleText">
-                    Chat
-                </p>
-            </td>
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: scheduler }" data-icon="calendar"></a>
+            </td>            
+        </tr>
+        <tr>
+            <td class="moduleText">Profile</td>            
+            <td class="moduleText">Chat</td>
+            <td class="moduleText">Scheduler</td>
         </tr>
         <tr>
             <td>
-                <span id="favorites" data-role="touch" data-bind="events: { tap: favorites }">
-                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: favorites }" data-icon="favorites"></a>
-                </span>
-                <p class="moduleText">
-                    Favorites
-                </p>
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: favorites }" data-icon="favorites"></a>
             </td>
             <td>
-                <span id="setting" data-role="touch" data-bind="events: { tap: settings }">
-                <a href="#" class="fa moduleButton shadowBox" data-role="button" data-bind="events: { tap: settings }" data-icon="settings"></a>
-                </span>
-                <p class="moduleText">
-                    Settings
-                </p>
-                
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: settings }" data-icon="settings"></a>
             </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="moduleText">Favorites</td>
+            <td class="moduleText">Settings</td>
+            <td></td>
         </tr>
     </table>
     <div data-role="footer">

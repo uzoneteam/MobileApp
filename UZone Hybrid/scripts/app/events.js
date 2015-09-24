@@ -31,10 +31,14 @@ app.Events = (function () {
                             url: "http://uzonewebapi.azurewebsites.net/api/events/1?callback=?",
                             dataType: "jsonp"
                         }
-                    }
+                    }                   
                 }),
                 template: $("#eventsTemplate").html()
             });
+                        
+            if ($("scheduleList").data() === null) {
+                $("#scheduleList").append("<h1>No events available for this month</h1>");
+            }
         };
 
         var displayName = function () {
@@ -61,33 +65,37 @@ app.Events = (function () {
                 });
 
             }
+            
+            if ($("scheduleList").data() === null) {
+                $("#scheduleList").append("<h1>No events available for this month</h1>");
+            }
         };
-        
+
         var saveActivity = function () {
             console.log('here');
             app.mobileApp.navigate('views/activitiesView.html');
             // Validating of the required fields
             //if (validator.validate()) {
-                
-                // Adding new activity to Activities model
-               /* var activities = app.Activities.activities;
-                var activity = activities.add();
-                
-                activity.Text = 'test';
-                activity.UserId = app.Users.currentUser.get('data').Id;
-                
-                activities.one('sync', function () {
-                    app.mobileApp.navigate('views/activitiesView.html');
-                });
-                
-                activities.sync();*/
+
+            // Adding new activity to Activities model
+            /* var activities = app.Activities.activities;
+             var activity = activities.add();
+             
+             activity.Text = 'test';
+             activity.UserId = app.Users.currentUser.get('data').Id;
+             
+             activities.one('sync', function () {
+                 app.mobileApp.navigate('views/activitiesView.html');
+             });
+             
+             activities.sync();*/
             //}
         };
 
         return {
             init: init,
             displayName: displayName,
-            show: show ,
+            show: show,
             saveActivity: saveActivity
         };
     }());
