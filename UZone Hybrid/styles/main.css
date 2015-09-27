@@ -212,14 +212,15 @@ input[type='week'] {
 #uzoneApp.km-flat .km-header .km-view-title {
     font-size: 1.3em;
 }
-/* Welcome screen */
+/* Welcome/Login screen */
 
 #uzoneApp .app-name {
-    margin-top: .3em;
+    margin-top: .6em;
     width: 230px;
     height: 250px;
-    margin-left: 3.2em;
-    text-indent: -9999px;
+/*     margin-left: 3.2em; */
+/*     text-indent: -9999px; */
+    
 }
 #uzoneApp .app-name small {
     display: block;
@@ -266,6 +267,24 @@ input[type='week'] {
     border: 0 none;
     background-color: transparent;
 }
+#uzoneApp .loginUser {
+    margin-left: .1em;
+    width: 80%;
+}
+#uzoneApp .loginPassword {
+    margin-left: .1em;
+    width: 80%;
+}
+#uzoneApp .credentials {
+    margin-left: 2.3em;
+    border-spacing: .5em;
+    width: 100%;
+}
+#uzoneApp .credentials td img {    
+    
+    text-align: center;
+}
+
 /* No API Key screen */
 
 #uzoneApp .noapikey-scrn h3 {
@@ -562,7 +581,6 @@ input[type='week'] {
     height: 28px;
     margin: 0 0 0 0;
 }
-
 .km-calendar:after,
 .km-calendar:before {
     content: "\F073";
@@ -599,33 +617,34 @@ input[type='week'] {
     margin-bottom: auto;
 }
  */
+
 .moduleButton {
-	-moz-box-shadow: 0px 10px 14px -7px #f29c93;
-	-webkit-box-shadow: 0px 10px 14px -7px #f29c93;
-	box-shadow: 0px 10px 14px -7px #f29c93;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100));
-	background:-moz-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
-	background:-webkit-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
-	background:-o-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
-	background:-ms-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
-	background:linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100',GradientType=0);
-	background-color:#fe1a00 !important;
-	-moz-border-radius:4px;
-	-webkit-border-radius:4px;
-	border-radius:4px;
-	border:1px solid #d83526;
-	display:block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	font-weight:bold;
-	padding:25px 1px;
-	text-decoration:none;
-     width: 4.5em;
+    -moz-box-shadow: 0px 10px 14px -7px #f29c93;
+    -webkit-box-shadow: 0px 10px 14px -7px #f29c93;
+    box-shadow: 0px 10px 14px -7px #f29c93;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100));
+    background: -moz-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+    background: -webkit-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+    background: -o-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+    background: -ms-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+    background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100', GradientType=0);
+    background-color: #fe1a00 !important;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #d83526;
+    display: block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 25px 1px;
+    text-decoration: none;
+    width: 4.5em;
     height: 4.5em;
-    margin:auto;
+    margin: auto;
 }
 .moduleButton .km-icon {
     width: 32px;
@@ -634,21 +653,21 @@ input[type='week'] {
     color: white;
 }
 .moduleButton:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00));
-	background:-moz-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
-	background:-webkit-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
-	background:-o-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
-	background:-ms-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
-	background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00',GradientType=0);
-	/*background-color:#ce0100;*/
-    background-color:transparent;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00));
+    background: -moz-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+    background: -webkit-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+    background: -o-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+    background: -ms-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+    background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00', GradientType=0);
+    /*background-color:#ce0100;*/
+    
+    background-color: transparent;
 }
 .moduleButton:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
-
 .moduleText {
     text-align: center;
     margin-top: 1px;
@@ -657,7 +676,7 @@ input[type='week'] {
     font-family: Century Gothic, sans-serif;
 }
 .moduleTable {
-  	width: 100%;
+    width: 100%;
 }
 /* Events */
 

@@ -27,7 +27,6 @@
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/css/font-awesome.min.css">
     <link href="styles/main.css" rel="stylesheet">
-    
 </head>
 
 <body id="uzoneApp">
@@ -38,16 +37,25 @@
     <div data-role="view" id="welcome" data-layout="default" class="welcome-scrn form-view" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
         <div data-role="header"></div>
         <form id="login-form">
-            <!--<h2 class="app-name"></h2>-->
-                <img class="app-name" src="styles/images/UZONE_Logo_Transparent.png" />
-            <ul data-role="listview" data-style="inset">
-                <li>
-                    <input type="text" id="loginUsername" placeholder="username" style="background-color:White;outline:0;position:relative" required validationMessage="Username is required!">                   
-                </li>
-                <li>
-                    <input type="password" id="loginPassword" placeholder="password" required validationMessage="Password is required!">
-                </li>
-            </ul>
+           
+            <table class="credentials">
+                <tr>
+                    <td>
+                         <img class="app-name" src="styles/images/UZONE_Logo_Transparent.png" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="loginUsername" placeholder="username" class="loginUser" required validationMessage="Username is required!">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" id="loginPassword" placeholder="password" class="loginPassword" required validationMessage="Password is required!">
+                    </td>
+                </tr>
+            </table>
+            <br/>
         </form>
         <ol class="group-wrp">
             <li>
@@ -60,9 +68,7 @@
                 <a data-role="button" href="views/signupView.html" class="btn">Register for an account</a>
             </li>
         </ol>
-        
     </div>
-    
 </body>
 
 </html>

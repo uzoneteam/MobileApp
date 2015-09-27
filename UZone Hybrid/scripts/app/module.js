@@ -70,6 +70,27 @@ app.Module = (function () {
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
         }
+        
+        var User = function () {                   
+
+                var userId = this.get('UserId');
+            
+            console.log(userId);
+
+                var user = $.grep(app.Users.users(), function (e) {
+                    return e.Id === userId;
+                })[0];
+                
+                console.log(user);
+
+                return user ? {
+                    DisplayName: user.DisplayName,
+                    PictureUrl: user.AvatarUri
+                } : {
+                    DisplayName: 'Anonymous',
+                    PictureUrl: app.helper.resolveProfilePictureUrl()
+                };
+            }                        
 
         return {
             init: init,
@@ -78,7 +99,8 @@ app.Module = (function () {
             chat: chat,
             favorites: favorites,
             settings: settings,
-            displayName: displayName
+            displayName: displayName,
+            User: User
         };
     }());
 
