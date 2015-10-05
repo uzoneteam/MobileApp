@@ -14,6 +14,8 @@ app.Login = (function () {
         var $loginUsername;
         var $loginPassword;
         
+        $('#loginUsername').focus();
+        
         var isAnalytics = analytics.isAnalytics();
 
         var init = function () {
@@ -23,10 +25,7 @@ app.Login = (function () {
             }
 
             $loginUsername = $('#loginUsername');
-            $loginPassword = $('#loginPassword');
-            
-			$loginUsername.focus();
-
+            $loginPassword = $('#loginPassword');            
            
             if (!isAnalytics) {
                 console.log('EQATEC product key is not set. You cannot use EQATEC Analytics service.');
@@ -35,7 +34,7 @@ app.Login = (function () {
 
         var show = function () {
             $loginUsername.val('');
-            $loginPassword.val('');
+            $loginPassword.val('');             
         };
 
         // Authenticate to use Backend Services as a particular user

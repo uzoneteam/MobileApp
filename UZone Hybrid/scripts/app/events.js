@@ -31,16 +31,23 @@ app.Events = (function () {
                             url: "http://uzonewebapi.azurewebsites.net/api/events/1?callback=?",
                             dataType: "jsonp"
                         }
-                    }                   
+                    },
+                    group: {field: 'EventStartFormatted'}
                 }),
-                template: $("#eventsTemplate").html()
+                template: $("#eventsTemplate").html(),                  
+                headerTemplate: '${value}'
             });
                         
             if ($("scheduleList").data() === null) {
                 $("#scheduleList").append("<h1>No events available for this month</h1>");
             }
+            
+            function formatEventDate(eventdate) {
+                console.log(eventdate);
+            	return moment().format('dddd');
+        	}
         };
-
+               
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
         }
@@ -59,16 +66,17 @@ app.Events = (function () {
                                 url: "http://uzonewebapi.azurewebsites.net/api/1/events/" + e.view.params.month + "?callback=?",
                                 dataType: "jsonp"
                             }
-                        }
+                        },
+                    	group: {field: 'EventStartFormatted'}
                     }),
                     template: $("#eventsTemplate").html()
                 });
+                
+             	if ($("scheduleList").data() === null) {
+                	$("#scheduleList").append("<h1>No events available for this month</h1>");
+            	}
 
-            }
-            
-            if ($("scheduleList").data() === null) {
-                $("#scheduleList").append("<h1>No events available for this month</h1>");
-            }
+            }                        
         };
 
         var saveActivity = function () {
