@@ -1,13 +1,13 @@
 /**
- * Module view model
+ * Welcome view model
  */
 
 var app = app || {};
 
-app.Module = (function () {
+app.Welcome = (function () {
     'use strict';
 
-    var moduleViewModel = (function () {
+    var welcomeViewModel = (function () {
 
         var isInMistSimulator = (location.host.indexOf('icenium.com') > -1);
 
@@ -28,7 +28,7 @@ app.Module = (function () {
                 analytics.TrackFeature('Module.Scheduler');
             }
             app.mobileApp.hideLoading();
-            app.mobileApp.navigate('views/moduleScheduler.html');            
+            app.mobileApp.navigate('views/moduleScheduler.html');
         };
 
         var profile = function () {
@@ -39,7 +39,7 @@ app.Module = (function () {
             app.mobileApp.hideLoading();
             app.mobileApp.navigate('views/signupView.html');
         };
-        
+
         var chat = function () {
             app.mobileApp.showLoading();
             if (isAnalytics) {
@@ -48,7 +48,7 @@ app.Module = (function () {
             app.mobileApp.hideLoading();
             app.mobileApp.navigate('views/activitiesView.html');
         };
-        
+
         var favorites = function () {
             app.mobileApp.showLoading();
             if (isAnalytics) {
@@ -57,7 +57,7 @@ app.Module = (function () {
             app.mobileApp.hideLoading();
             app.mobileApp.navigate('views/moduleView.html');
         };
-        
+
         var settings = function () {
             app.mobileApp.showLoading();
             if (isAnalytics) {
@@ -70,27 +70,20 @@ app.Module = (function () {
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
         }
+
+        var avatarUri = function () {
+            if (app.Users.currentUser.get('data').AvatarUri)
+            	return app.Users.currentUser.get('data').AvatarUri;
+            else
+                return "styles/images/avatar.png";
+        }
         
-        var User = function () {                   
-
-                var userId = this.get('UserId');
-            
-            console.log(userId);
-
-                var user = $.grep(app.Users.users(), function (e) {
-                    return e.Id === userId;
-                })[0];
-                
-                console.log(user);
-
-                return user ? {
-                    DisplayName: user.DisplayName,
-                    PictureUrl: user.AvatarUri
-                } : {
-                    DisplayName: 'Anonymous',
-                    PictureUrl: app.helper.resolveProfilePictureUrl()
-                };
-            }                        
+        var signOut = function () {
+            app.mobileApp.showLoading();
+            app.helper.logout();
+            app.mobileApp.hideLoading();
+            app.mobileApp.navigate('index.html');
+        }
 
         return {
             init: init,
@@ -100,10 +93,11 @@ app.Module = (function () {
             favorites: favorites,
             settings: settings,
             displayName: displayName,
-            User: User
+            avatarUri: avatarUri,
+            signOut: signOut
         };
     }());
 
-    return moduleViewModel;
+    return welcomeViewModel;
 
 }());

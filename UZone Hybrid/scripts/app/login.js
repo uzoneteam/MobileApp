@@ -58,7 +58,7 @@ app.Login = (function () {
             })
             .then(function () {
 
-                app.mobileApp.navigate('views/moduleView.html');
+                app.mobileApp.navigate('views/welcome.html');
             })
             .then(null,
                   function (err) {

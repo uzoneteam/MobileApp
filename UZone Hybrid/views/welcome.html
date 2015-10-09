@@ -1,0 +1,63 @@
+<div data-role="view" id="welcome" data-model="app.Welcome" data-init="app.Welcome.init" data-layout="default">
+    <div data-role="header">
+        <div data-role="navbar" style="background: #000000">
+            <div class="headerMenu">
+                <div style="float:left">
+                    <a href="#app-drawer" data-rel="drawer" data-role="button" style="color:white" data-icon="menu"></a>
+                </div>
+                <div style="float:left;position:relative;left:50%;height:16px;">
+                    <div style="float:left;left:-100%;position:relative">
+                        <img src="styles/images/UZONE_Logo_Transparent_Header.png" />
+                    </div>
+                </div>
+                <div style="float:right">
+                    <div class="user-image">
+                        <img data-bind="attr:{src: avatarUri}" alt="#: displayName #">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="moduleTable">
+        <tr>
+            <td>
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: scheduler }" data-icon="calendar"></a>
+            </td>
+            <td>
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: chat }" data-icon="chat"></a>
+            </td>
+            <td>
+                <a class="fa moduleButton" data-role="button" data-bind="events: { click: scheduler }" data-icon="calendar"></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="moduleText">Events</td>
+            <td class="moduleText">Chat</td>
+            <td class="moduleText">GPS</td>
+        </tr>
+    </table>
+    <div data-role="footer">
+        <div data-role="navbar" style="background: #000000">
+            &nbsp;
+        </div>
+    </div>
+</div>
+<div data-role="drawer" id="app-drawer" data-model="app.Welcome">
+    <ul data-role="listview">
+        <li>
+            <div class="user-drawer-image" style="float:left;position:relative;left:30%;">
+                <div style="float:left;left:-100%;position:relative">
+                    <img data-bind="attr:{src: avatarUri}" alt="#: displayName #">
+                </div>
+            </div>
+        </li>
+        <li><a class="fa drawerHomeList" href="views/welcome.html" data-icon="favorites">&nbsp;&nbsp;Favorites</a>
+        </li>
+        <li><a class="fa drawerHomeList" href="views/signupView.html" data-icon="profile">&nbsp;&nbsp;Manage Profile</a>
+        </li>
+        <li><a class="fa drawerHomeList" href="views/welcome.html" data-icon="settings">&nbsp;&nbsp;Settings</a>
+        </li>
+        <li><a class="fa drawerHomeList" data-bind="events: { click: signOut }" data-icon="signout">&nbsp;&nbsp;Sign Out</a>
+        </li>
+    </ul>
+</div>

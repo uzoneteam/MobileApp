@@ -196,7 +196,7 @@ input[type='week'] {
 /* App Header */
 
 #uzoneApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header {
-    min-height: 20px;
+    min-height: 5px;
     background-color: #4d4d4d;
 }
 #uzoneApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header .km-navbar {
@@ -576,10 +576,16 @@ input[type='week'] {
 .fa .km-icon:before {
     font: 2em/2em 'FontAwesome';
 }
-.km-button .km-icon {
+/* .km-button .km-icon {
     width: 32px;
     height: 28px;
     margin: 0 0 0 0;
+} */
+.headerMenu .km-button {
+    height: 1em;
+}
+.headerSubMenu .km-button {
+    height: 1em;
 }
 .km-calendar:after,
 .km-calendar:before {
@@ -746,4 +752,40 @@ input[type='week'] {
 }
 .invalid {
     color: red;
+}
+.km-menu:after,
+.km-menu:before {
+    content: "\e0ab";
+}
+.km-signout:after,
+.km-signout:before {
+    content: "\f08b";
+}
+
+/* Menu */
+.headerMenu .fa .km-icon:after,
+.headerMenu .fa .km-icon:before {
+    font: 1em/1em 'FontAwesome';
+}
+.subHeaderMenu .fa .km-icon:after,
+.subHeaderMenu .fa .km-icon:before {
+    font: 1em/1em 'FontAwesome';    
+}
+
+/* drawer */
+#uzoneApp .user-drawer-image {
+    float: right;
+    width: 50px;
+    height: 200px;
+    margin-top: 15px;
+    color: blue;
+}
+#uzoneApp .drawerHomeList {
+    color: #1e90ff;
+    font-family: Century Gothic, sans-serif;
+}
+#uzoneApp .user-drawer-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 95px;
 }
