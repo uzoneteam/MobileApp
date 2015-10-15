@@ -1,12 +1,22 @@
 <div data-role="view" id="view-all-events" data-layout="default" data-init="app.Events.init" class="activities-view" data-show="app.Events.show" data-model="app.Events">
     <div data-role="header">
         <div data-role="navbar" style="background: #000000">
-            <img style="float:left" src="styles/images/UZONE_Logo_Transparent_Small.png" />            
-            <span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
-            <div class="user-image">
-                <img src="styles/images/avatar.png">
-            </div>            
-        </div>       
+            <div class="headerMenu">
+                <div style="float:left">
+                    <a href="#app-drawer-manage" data-rel="drawer" data-role="button" style="color:white" data-icon="menu"></a>
+                </div>
+                <div style="float:left;position:relative;left:50%;height:16px;">
+                    <div style="float:left;left:-100%;position:relative">
+                        <img src="styles/images/UZONE_Logo_Transparent_Header.png" />
+                    </div>
+                </div>
+                <div style="float:right">
+                    <div class="user-image">
+                        <img data-bind="attr:{src: avatarUri}" alt="#: displayName #">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <ul data-role="listview" data-source="events" data-template="eventsTemplate"  data-fixed-headers="true" id="scheduleList" >
@@ -60,7 +70,7 @@
             <span class="event-loc-txt">#: EventLocationID #</span>
             <a class="event-desc-txt">#: EventDescription #</a>
             <span class="time-span">#: EventStart #&nbsp; #: EventEnd#</span>
-            <input type="checkbox" id="switch" data-role="switch" />
+            <!--<input type="checkbox" id="switch" data-role="switch" />-->
             <a data-align="right" data-role="button" onclick="createChat('#: EventSubject #')">Chat Now</a>
         </div>
     </div>

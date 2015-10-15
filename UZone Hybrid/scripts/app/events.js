@@ -8,11 +8,11 @@ app.Events = (function () {
     'use strict';
 
     var eventViewModel = (function () {
-
-
         var isInMistSimulator = (location.host.indexOf('icenium.com') > -1);
 
         var isAnalytics = analytics.isAnalytics();
+
+        var currentSchool;
 
         var init = function () {
 
@@ -22,32 +22,39 @@ app.Events = (function () {
                 analytics.TrackFeature('Events');
             }
 
+            if (app.Users.currentUser.get('data')) {
+                currentSchool = app.Users.currentUser.get('data').School;
+            } else {
+                currentSchool = 0;
+            }
+
             $("#scheduleList").kendoMobileListView({
                 pullToRefresh: true,
                 dataSource: new kendo.data.DataSource({
                     transport: {
                         read: {
-                            // change to be the inital endpoint by school
-                            url: "http://uzonewebapi.azurewebsites.net/api/events/1?callback=?",
+                            url: "http://uzonewebapi.azurewebsites.net/api/events/" + currentSchool + "?callback=?",
                             dataType: "jsonp"
                         }
                     },
-                    group: {field: 'EventStartFormatted'}
+                    group: {
+                        field: 'EventStartFormatted'
+                    }
                 }),
-                template: $("#eventsTemplate").html(),                  
+                template: $("#eventsTemplate").html(),
                 headerTemplate: '${value}'
             });
-                        
+
             if ($("scheduleList").data() === null) {
                 $("#scheduleList").append("<h1>No events available for this month</h1>");
             }
-            
+
             function formatEventDate(eventdate) {
                 console.log(eventdate);
-            	return moment().format('dddd');
-        	}
+                return moment().format('dddd');
+            }
         };
-               
+
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
         }
@@ -62,21 +69,22 @@ app.Events = (function () {
                     dataSource: new kendo.data.DataSource({
                         transport: {
                             read: {
-                                // change to get school id
-                                url: "http://uzonewebapi.azurewebsites.net/api/1/events/" + e.view.params.month + "?callback=?",
+                                url: "http://uzonewebapi.azurewebsites.net/api/" + currentSchool + "/events/" + e.view.params.month + "?callback=?",
                                 dataType: "jsonp"
                             }
                         },
-                    	group: {field: 'EventStartFormatted'}
+                        group: {
+                            field: 'EventStartFormatted'
+                        }
                     }),
                     template: $("#eventsTemplate").html()
                 });
-                
-             	if ($("scheduleList").data() === null) {
-                	$("#scheduleList").append("<h1>No events available for this month</h1>");
-            	}
 
-            }                        
+                if ($("scheduleList").data() === null) {
+                    $("#scheduleList").append("<h1>No events available for this month</h1>");
+                }
+
+            }
         };
 
         var saveActivity = function () {
@@ -100,11 +108,27 @@ app.Events = (function () {
             //}
         };
 
+        var avatarUri = function () {
+            if (app.Users.currentUser.get('data').AvatarUri)
+                return app.Users.currentUser.get('data').AvatarUri;
+            else
+                return "styles/images/avatar.png";
+        }
+
+        var signOut = function () {
+            app.mobileApp.showLoading();
+            app.helper.logout();
+            app.mobileApp.hideLoading();
+            app.mobileApp.navigate('index.html');
+        }
+
         return {
             init: init,
             displayName: displayName,
             show: show,
-            saveActivity: saveActivity
+            saveActivity: saveActivity,
+            avatarUri: avatarUri,
+            signOut: signOut
         };
     }());
 

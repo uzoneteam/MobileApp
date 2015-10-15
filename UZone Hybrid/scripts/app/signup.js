@@ -34,25 +34,39 @@ app.Signup = (function () {
             })
 
             if (errorCount === 0) {
-                dataSource.AvatarUri = userAvatarUri;
-                Everlive.$.Users.register(
-                        dataSource.Username,
-                        dataSource.Password,
-                        dataSource)
-                    .then(function () {
-                            app.showAlert("Registration successful");
-                            app.mobileApp.navigate('views/moduleView.html');
-                        },
-                        function (err) {
-                            app.showError(err.message);
-                        });
+                if (app.Users.currentUser.get('data')) {
+                    console.log(dataSource);
+                    Everlive.$.Users.updateSingle(
+                            dataSource)
+                        .then(function () {
+                                app.showAlert("User updated successful");
+                                app.mobileApp.navigate('views/welcome.html');
+                            },
+                            function (err) {
+                                app.showError(err.message);
+                            });
+                } else {
+                    dataSource.AvatarUri = userAvatarUri;
+                    Everlive.$.Users.register(
+                            dataSource.Username,
+                            dataSource.Password,
+                            dataSource)
+                        .then(function () {
+                                app.showAlert("Registration successful");
+                                app.mobileApp.navigate('index.html');
+                            },
+                            function (err) {
+                                app.showError(err.message);
+                            });
+                }
+
             }
         };
 
         var addAvatar = function () {
             var success = function (data) {
                 Everlive.$.Files.create({
-                    Filename: avatarFilename, //Math.random().toString(36).substring(2, 15) + ".jpg",
+                    Filename: avatarFilename,
                     ContentType: "image/jpeg",
                     base64: data
                 }).then(loadPhotos);
@@ -73,19 +87,42 @@ app.Signup = (function () {
         };
 
         var show = function () {
+            if (app.Users.currentUser.get('data')) {
+                console.log(app.Users.currentUser.get('data'));
+                dataSource = kendo.observable({
+                    Username: app.Users.currentUser.get('data').Username,
+                    Password: '',
+                    DisplayName: app.Users.currentUser.get('data').DisplayName,
+                    Email: app.Users.currentUser.get('data').Email,
+                    School: app.Users.currentUser.get('data').School,
+                    Major: app.Users.currentUser.get('data').Major,
+                    BirthDate: app.Users.currentUser.get('data').BirthDate,
+                    Frat_Soro: app.Users.currentUser.get('data').Frat_Soro,
+                    Graduation_Year: app.Users.currentUser.get('data').Graduation_Year,
+                    AvatarUri: app.Users.currentUser.get('data').AvatarUri,
+                    Id: app.Users.currentUser.get('data').Id
+                });
 
-            dataSource = kendo.observable({
-                Username: '',
-                Password: '',
-                DisplayName: '',
-                Email: '',
-                School: '0',
-                Major: '',
-                BirthDate: '',
-                Frat_Soro: '',
-                Graduation_Year: '',
-                AvatarUri: userAvatarUri
-            });
+                var loadImage = [];
+                loadImage.push(app.Users.currentUser.get('data').AvatarUri);
+                $("#avatarImage").kendoMobileListView({
+                    dataSource: loadImage,
+                    template: "<img src='#: data #'>"
+                });
+            } else {
+                dataSource = kendo.observable({
+                    Username: '',
+                    Password: '',
+                    DisplayName: '',
+                    Email: '',
+                    School: '0',
+                    Major: '',
+                    BirthDate: '',
+                    Frat_Soro: '',
+                    Graduation_Year: '',
+                    AvatarUri: userAvatarUri
+                });
+            }
             kendo.bind($('#signup-form'), dataSource, kendo.mobile.ui);
         };
 

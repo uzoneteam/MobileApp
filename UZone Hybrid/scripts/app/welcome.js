@@ -14,7 +14,6 @@ app.Welcome = (function () {
         var isAnalytics = analytics.isAnalytics();
 
         var init = function () {
-
             if (!isAnalytics) {
                 console.log('EQATEC product key is not set. You cannot use EQATEC Analytics service.');
             } else if (isAnalytics) {
@@ -73,11 +72,11 @@ app.Welcome = (function () {
 
         var avatarUri = function () {
             if (app.Users.currentUser.get('data').AvatarUri)
-            	return app.Users.currentUser.get('data').AvatarUri;
+                return app.Users.currentUser.get('data').AvatarUri;
             else
                 return "styles/images/avatar.png";
         }
-        
+
         var signOut = function () {
             app.mobileApp.showLoading();
             app.helper.logout();
