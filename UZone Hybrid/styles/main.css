@@ -218,9 +218,8 @@ input[type='week'] {
     margin-top: .6em;
     width: 230px;
     height: 250px;
-/*     margin-left: 3.2em; */
-/*     text-indent: -9999px; */
-    
+    /*     margin-left: 3.2em; */
+    /*     text-indent: -9999px; */
 }
 #uzoneApp .app-name small {
     display: block;
@@ -280,11 +279,9 @@ input[type='week'] {
     border-spacing: .5em;
     width: 100%;
 }
-#uzoneApp .credentials td img {    
-    
+#uzoneApp .credentials td img {
     text-align: center;
 }
-
 /* No API Key screen */
 
 #uzoneApp .noapikey-scrn h3 {
@@ -446,7 +443,7 @@ input[type='week'] {
 #uzoneApp .activity-content .time-span {
     display: block;
     color: #a6a6a6;
-    font-size: .7rem;
+    font-size: .5rem;
     text-transform: uppercase;
 }
 #uzoneApp .activity-content .comment-content .time-span {
@@ -581,6 +578,7 @@ input[type='week'] {
     height: 28px;
     margin: 0 0 0 0;
 } */
+
 .headerMenu .km-button {
     height: 1em;
 }
@@ -686,12 +684,19 @@ input[type='week'] {
 }
 /* Events */
 
+.chat-btn {
+    color: white !important;
+    background: black !important;
+    font-family: Century Gothic, sans-serif;
+}
+
 .event-desc-txt {
     display: block;
     margin-bottom: 1em;
     color: #4d4d4d;
     line-height: 1.5;
     word-wrap: break-word;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 .event-subj-txt {
     display: block;
@@ -700,6 +705,8 @@ input[type='week'] {
     line-height: .4;
     word-wrap: break-word;
     font-size: 1.6em;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-transform:uppercase;
 }
 .event-loc-txt {
     display: block;
@@ -707,6 +714,7 @@ input[type='week'] {
     color: #4d4d4d;
     text-transform: uppercase;
     word-wrap: break-word;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 .event-items {
     background-image: url(images/black_background.jpg) !important;
@@ -761,18 +769,18 @@ input[type='week'] {
 .km-signout:before {
     content: "\f08b";
 }
-
 /* Menu */
+
 .headerMenu .fa .km-icon:after,
 .headerMenu .fa .km-icon:before {
     font: 1em/1em 'FontAwesome';
 }
 .subHeaderMenu .fa .km-icon:after,
 .subHeaderMenu .fa .km-icon:before {
-    font: 1em/1em 'FontAwesome';    
+    font: 1em/1em 'FontAwesome';
 }
-
 /* drawer */
+
 #uzoneApp .user-drawer-image {
     float: right;
     width: 50px;
@@ -788,4 +796,16 @@ input[type='week'] {
     width: 200px;
     height: 200px;
     border-radius: 95px;
+}
+/* scheduler */
+
+.header-font {
+    font-family: "Comic Sans MS", cursive, sans-serif !important;
+    background: none !important;
+    text-align: center;
+}
+.km-group-title {
+    background: none !important;
+    border-color: white !important;
+    text-align: center !important;
 }

@@ -42,7 +42,7 @@ app.Events = (function () {
                     }
                 }),
                 template: $("#eventsTemplate").html(),
-                headerTemplate: '${value}'
+                headerTemplate: "<span class='header-font'>${value}</span><br/>"
             });
 
             if ($("scheduleList").data() === null) {
@@ -77,7 +77,8 @@ app.Events = (function () {
                             field: 'EventStartFormatted'
                         }
                     }),
-                    template: $("#eventsTemplate").html()
+                    template: $("#eventsTemplate").html(),
+                    headerTemplate: "<span class='header-font'>${value}</span><br/>"
                 });
 
                 if ($("scheduleList").data() === null) {
