@@ -15,6 +15,7 @@ app.Signup = (function () {
         var $signupBtnWrp;
         var validator;
         var userAvatarUri;
+        var avatarFilename = Math.random().toString(36).substring(2, 15) + ".jpg";
 
         var signup = function () {
             var errorCount = 0;
@@ -51,7 +52,7 @@ app.Signup = (function () {
         var addAvatar = function () {
             var success = function (data) {
                 Everlive.$.Files.create({
-                    Filename: Math.random().toString(36).substring(2, 15) + ".jpg",
+                    Filename: avatarFilename, //Math.random().toString(36).substring(2, 15) + ".jpg",
                     ContentType: "image/jpeg",
                     base64: data
                 }).then(loadPhotos);
@@ -66,7 +67,7 @@ app.Signup = (function () {
             };
             navigator.camera.getPicture(success, error, config);
         }
-        
+
         var init = function () {
 
         };
@@ -89,16 +90,22 @@ app.Signup = (function () {
         };
 
         function loadPhotos() {
-            Everlive.$.Files.get().then(function (data) {
+            var query = new Everlive.Query();
+            var now = new Date();
+            var queryTime = now.getMinutes() - 1;
+            now.setMinutes(queryTime);
+            query.where().gt('CreatedAt', now);
+            Everlive.$.Files.get(query).then(function (data) {
                 var files = [];
-                files.push(data.result[data.count - 1].Uri)
+                console.log(data.result);
                 userAvatarUri = data.result[data.count - 1].Uri;
-                console.log(userAvatarUri);
+                files.push(data.result[data.count - 1].Uri);
                 $("#avatarImage").kendoMobileListView({
                     dataSource: files,
                     template: "<img src='#: data #'>"
                 });
             });
+
         }
 
         return {
