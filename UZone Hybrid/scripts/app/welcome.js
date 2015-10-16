@@ -68,21 +68,26 @@ app.Welcome = (function () {
 
         var displayName = function () {
             return app.Users.currentUser.get('data').DisplayName;
-        }
+        };
 
         var avatarUri = function () {
             if (app.Users.currentUser.get('data').AvatarUri)
                 return app.Users.currentUser.get('data').AvatarUri;
             else
                 return "styles/images/avatar.png";
-        }
-
-        var signOut = function () {
-            app.mobileApp.showLoading();
-            app.helper.logout();
-            app.mobileApp.hideLoading();
+        };
+        
+        var navigateHome = function () {
             app.mobileApp.navigate('index.html');
-        }
+        };
+        
+        var signOut = function () {
+            app.helper.logout()
+            .then(navigateHome, function (err) {
+                app.showError(err.message);
+                navigateHome();
+            });
+        };
 
         return {
             init: init,

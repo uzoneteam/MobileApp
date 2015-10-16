@@ -27,6 +27,10 @@ app.Comments = (function () {
                 UserId: {
                     field: 'UserId',
                     defaultValue: null
+                },
+                MediaUri: {
+                    field: 'MediaUri',
+                    defaultValue: null
                 }
             },
             User: function () {
@@ -57,7 +61,6 @@ app.Comments = (function () {
             },
             serverFiltering: true,
             change: function (e) {
-
                 if (e.items && e.items.length > 0) {
                     $('#comments-listview').kendoMobileListView({
                         dataSource: e.items,
@@ -68,7 +71,7 @@ app.Comments = (function () {
                 }
             },
             sort: { field: 'CreatedAt', dir: 'desc' }
-        });
+        }); 
         
         return {
             comments: commentsDataSource

@@ -1,26 +1,33 @@
 <div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-activity-view"
     data-init="app.AddActivity.init" data-show="app.AddActivity.show" data-model="app.AddActivity">
-    <!--<div data-role="header">
-        <div data-role="navbar">
-            Friends
-            <a class="nav-button" data-align="left" data-role="backbutton">Cancel</a>
-            <a class="nav-button" data-align="right" data-role="button" data-bind="click: saveActivity">Done</a>
-        </div>
-    </div>-->
     <div data-role="header">
         <div data-role="navbar" style="background: #000000">
-            <img src="styles/images/UZONE_Logo_Transparent_Small.png" />
-            <!--<span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
-            <div class="user-image">
-                <img src="styles/images/avatar.png">
-            </div>-->
-            <a class="nav-button" data-align="left" data-role="backbutton">Cancel</a>
-            <a class="nav-button" data-align="right" data-role="button" data-bind="click: saveActivity">Done</a>
+            <div class="headerMenu">
+                <div style="float:left">
+                    <a href="#app-drawer-manage" data-rel="drawer" data-role="button" style="color:white" data-icon="menu"></a>
+                </div>
+                <div style="float:left;position:relative;left:50%;height:16px;">
+                    <div style="float:left;left:-100%;position:relative">
+                        <img src="styles/images/UZONE_Logo_Transparent_Header.png" />
+                    </div>
+                </div>
+                <div style="float:right">
+                    <div class="user-image">
+                        <img data-bind="attr:{src: avatarUri}" alt="#: displayName #">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="enterStatus" class="share-form-wrp" data-role="listview" data-style="inset">
         <div class="user-share">
-            <textarea id="newStatus" placeholder="What's on your mind?" required validationMessage="Group name is required!"></textarea>
+            <textarea id="newStatus" placeholder="What's the name of your group?" required validationMessage="Group name is required!"></textarea>
+            <a data-align="left" style="color:white;background-color:black" data-role="button" data-bind="click: saveActivity">Add Group</a>
+        </div>        
+    </div>
+    <div data-role="footer">
+        <div data-role="navbar" style="background: #000000">
+            <a class="nav-button nav-button-icon nav-button-back-d hide-text" data-align="left" data-role="backbutton">Back</a>
         </div>
     </div>
 </div>

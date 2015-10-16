@@ -1,29 +1,36 @@
 <div data-role="view" id="view-all-activities" data-layout="default" class="activities-view" data-model="app.Activities">
-    <!--<div data-role="header">
-        <div data-role="navbar">
-            Friends
-            <a class="nav-button" data-align="left" data-role="backbutton" data-click="app.Activities.logout">Logout</a>
-            <a class="nav-button" data-align="right" data-role="button" href="views/addActivityView.html">Add</a>
-        </div>
-    </div>-->
     <div data-role="header">
         <div data-role="navbar" style="background: #000000">
-            <img src="styles/images/UZONE_Logo_Transparent_Small.png" />
-            <!--<span data-align="right">HI&nbsp;</span><span id="lbname" data-align="right" data-bind="text: displayName"></span>
-            <div class="user-image">
-                <img src="styles/images/avatar.png">
-            </div>-->
-             <a class="nav-button" data-align="right" data-role="button" href="views/addActivityView.html">Add</a>
+            <div class="headerMenu">
+                <div style="float:left">
+                    <a href="#app-drawer-manage" data-rel="drawer" data-role="button" style="color:white" data-icon="menu"></a>
+                </div>
+                <div style="float:left;position:relative;left:50%;height:16px;">
+                    <div style="float:left;left:-100%;position:relative">
+                        <img src="styles/images/UZONE_Logo_Transparent_Header.png" />
+                    </div>
+                </div>
+                <div style="float:right">
+                    <div class="user-image">
+                        <img data-bind="attr:{src: avatarUri}" alt="#: displayName #">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <ul id="activities-listview" data-style="inset" data-role="listview" data-template="activityTemplate"
-        data-bind="source: activities"></ul>
+    <ul id="activities-listview" data-style="inset" data-role="listview" data-template="activityTemplate" data-bind="source: activities"></ul>
     <p id="no-activities-span" hidden="hidden" class="no-items-msg">
-        <b>There are no groups yet.</b><br><br>Tap on the plus sign and share what's on your mind.
+        <b>There are no groups yet.</b>
+        <br>
+        <br>Tap on the comment sign and share what's on your mind.
     </p>
+    <div data-role="footer">
+        <div data-role="navbar" style="background: #000000">
+            <a class="nav-button nav-button-icon nav-button-back-d hide-text" data-align="left" data-role="backbutton">Back</a>
+            <a style="color:white !important" class="nav-button nav-button-icon nav-button-comment hide-text" href="views/addActivityView.html" data-align="right" data-role="backbutton">Group Name</a>
+        </div>
+    </div>
 </div>
-
 <!-- Activities ListView Template -->
 <script type="text/x-kendo-template" id="activityTemplate">
     <div data-role="touch" data-bind="events: { tap: activitySelected }" class="cf">
@@ -32,11 +39,8 @@
         </div>
         <div class="activity-content">
             <h2 class="person-name">#: User().DisplayName #</h2>
-            <div data-bind="visible: Picture">
-                <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%">
-            </div>
+            <span style="float: right" class="time-span">#: CreatedAtFormatted() #</span>
             <a class="user-share-txt">#: Text #</a>
-            <span class="time-span">#: CreatedAtFormatted() #</span>
         </div>
     </div>
 </script>

@@ -44,8 +44,8 @@ app.Events = (function () {
                 template: $("#eventsTemplate").html(),
                 headerTemplate: "<span class='header-font'>${value}</span><br/>"
             });
-
-            if ($("scheduleList").data() === null) {
+console.log( $("#scheduleList").data("kendoMobileListView").dataSource.total());
+            if ($("#scheduleList").data() === null) {
                 $("#scheduleList").append("<h1>No events available for this month</h1>");
             }
 
@@ -62,7 +62,6 @@ app.Events = (function () {
         var show = function (e) {
 
             if (e.view.params.month != undefined) {
-                console.log('got params');
 
                 $("#scheduleList").kendoMobileListView({
                     pullToRefresh: true,
@@ -75,15 +74,22 @@ app.Events = (function () {
                         },
                         group: {
                             field: 'EventStartFormatted'
+                        },
+                        dataBound: function() {
+                            if (this.dataSource.total() == 0) {
+                                
+                                $("#scheduleList").html('<li>Nothing Found.</li>');
+                            }
                         }
                     }),
-                    template: $("#eventsTemplate").html(),
-                    headerTemplate: "<span class='header-font'>${value}</span><br/>"
+                    template: $("#eventsTemplate").html()
                 });
-
-                if ($("scheduleList").data() === null) {
-                    $("#scheduleList").append("<h1>No events available for this month</h1>");
-                }
+                //console.log( $("#scheduleList").empty());
+                //console.log( $("#scheduleList").data("kendoMobileListView").dataSource('data'));
+                //if ($("#scheduleList").data() === null) {
+                    //$('#scheduleList').empty();
+                    //$("#scheduleList").append("<h1>No events available for this month</h1>");
+               // }
 
             }
         };

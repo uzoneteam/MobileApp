@@ -33,6 +33,10 @@ app.Activities = (function () {
                 Likes: {
                     field: 'Likes',
                     defaultValue: []
+                },
+                MediaUri: {
+                    field: 'MediaUri',
+                    defaultValue: null
                 }
             },
             CreatedAtFormatted: function () {
@@ -50,8 +54,6 @@ app.Activities = (function () {
                 var user = $.grep(app.Users.users(), function (e) {
                     return e.Id === userId;
                 })[0];
-                
-                console.log(user);
 
                 return user ? {
                     DisplayName: user.DisplayName,
@@ -69,15 +71,12 @@ app.Activities = (function () {
             }
         };
 
-        // Activities data source. The Backend Services dialect of the Kendo UI DataSource component
-        // supports filtering, sorting, paging, and CRUD operations.
         var activitiesDataSource = new kendo.data.DataSource({
             type: 'everlive',
             schema: {
                 model: activityModel
             },
             transport: {
-                // Required by Backend Services
                 typeName: 'Activities'
             },
             change: function (e) {
@@ -88,7 +87,10 @@ app.Activities = (function () {
                     $('#no-activities-span').show();
                 }
             },
-            sort: { field: 'CreatedAt', dir: 'desc' }
+            sort: {
+                field: 'CreatedAt',
+                dir: 'desc'
+            }
         });
 
         return {
@@ -97,18 +99,23 @@ app.Activities = (function () {
 
     }());
 
-    // Activities view model
+    var displayName = function () {
+        return app.Users.currentUser.get('data').DisplayName;
+    }
+
+    var avatarUri = function () {
+        if (app.Users.currentUser.get('data').AvatarUri)
+            return app.Users.currentUser.get('data').AvatarUri;
+        else
+            return "styles/images/avatar.png";
+    }
+
     var activitiesViewModel = (function () {
-
-        // Navigate to activityView When some activity is selected
         var activitySelected = function (e) {
-
             app.mobileApp.navigate('views/activityView.html?uid=' + e.data.uid);
         };
 
-        // Navigate to app home
         var navigateHome = function () {
-
             app.mobileApp.navigate('#welcome');
         };
 
@@ -124,7 +131,9 @@ app.Activities = (function () {
 
         return {
             activities: activitiesModel.activities,
-            activitySelected: activitySelected
+            activitySelected: activitySelected,
+            displayName: displayName,
+            avatarUri: avatarUri
         };
 
     }());

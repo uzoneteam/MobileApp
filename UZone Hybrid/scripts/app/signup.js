@@ -25,12 +25,25 @@ app.Signup = (function () {
             }).data('kendoValidator');
 
             $('#signupFields input,select').each(function () {
-                console.log(validator.validateInput($(this)));
                 if (validator.validateInput($(this)) === false) {
                     errorCount = errorCount + 1;
                     $(this).siblings('.km-icon').addClass('invalid');
                     return false;
                 }
+
+                if ($('#signupEmail')[0].value.indexOf('.edu') > -1) {
+
+                } else {
+                    errorCount = errorCount + 1;
+                    alert('email must be .edu account');
+                    return false;
+                }
+
+                if ($('#signupSchoolPicker')[0].value == 0) {
+                    errorCount = errorCount + 1;
+                    alert('please select an associated school');
+                    return false;
+                } 
             })
 
             if (errorCount === 0) {
@@ -80,7 +93,7 @@ app.Signup = (function () {
                 targetWidth: 400
             };
             navigator.camera.getPicture(success, error, config);
-        }
+        };
 
         var init = function () {
 
