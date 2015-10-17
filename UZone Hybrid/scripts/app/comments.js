@@ -66,8 +66,13 @@ app.Comments = (function () {
                         dataSource: e.items,
                         template: kendo.template($('#commentsTemplate').html())
                     });
+                    $('#galleryImages').kendoMobileListView({
+                        dataSource: e.items,                        
+                        template: kendo.template($('#galleryTemplate').html())                        
+                    });
                 } else {
                     $('#comments-listview').empty();
+                    $('#galleryImages').empty();
                 }
             },
             sort: { field: 'CreatedAt', dir: 'desc' }

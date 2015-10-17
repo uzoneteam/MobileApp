@@ -54,7 +54,7 @@ app.Welcome = (function () {
                 analytics.TrackFeature('Favorites');
             }
             app.mobileApp.hideLoading();
-            app.mobileApp.navigate('views/moduleView.html');
+            app.mobileApp.navigate('views/favoritesView.html');
         };
 
         var settings = function () {
@@ -63,7 +63,7 @@ app.Welcome = (function () {
                 analytics.TrackFeature('Setting');
             }
             app.mobileApp.hideLoading();
-            app.mobileApp.navigate('views/moduleView.html');
+            app.mobileApp.navigate('views/settingView.html');
         };
 
         var displayName = function () {

@@ -26,10 +26,7 @@
     </div>
 </div>
 <div data-role="drawer" id="app-drawer-gallery" data-position="right">
-    <ul data-role="listview">gallery
-        <li>
-           <img src="#: MediaUri #" onerror="onImgErrorSmall(this)">
-        </li>
+    <ul id="galleryImages" >gallery       
     </ul>
 </div>
 <!-- Comments Template -->
@@ -42,6 +39,10 @@
         <a class="user-share-txt">#: Comment #</a>
         <img src="#: MediaUri #" onerror="onImgErrorSmall(this)">
     </div>
+</script>
+<!-- Gallery Template -->
+<script type="text/x-kendo-template" id="galleryTemplate">
+    <img src="#: MediaUri #" onerror="onImgErrorSmall(this)">
 </script>
 <script>
     function onImgErrorSmall(source) {

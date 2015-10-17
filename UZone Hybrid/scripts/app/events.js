@@ -44,7 +44,7 @@ app.Events = (function () {
                 template: $("#eventsTemplate").html(),
                 headerTemplate: "<span class='header-font'>${value}</span><br/>"
             });
-console.log( $("#scheduleList").data("kendoMobileListView").dataSource.total());
+
             if ($("#scheduleList").data() === null) {
                 $("#scheduleList").append("<h1>No events available for this month</h1>");
             }
